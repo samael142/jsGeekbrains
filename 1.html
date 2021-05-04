@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Input Celsium temperature</p>
+    <form id="myForm">
+        <input type="number" id="temp" required>
+        <input type="submit" onclick="convertToFahrenheit();return false">
+        <p id="message"></p>
+    </form>
+</body>
+<script>
+    function convertToFahrenheit() {
+        let message
+        let isValidForm = document.forms['myForm'].checkValidity();
+        if (isValidForm) {
+            let celsiumTemp = document.getElementById("temp").value;
+            message = `Fahrenheit temperature is ${((9 / 5) * celsiumTemp + 32).toFixed(1)}`;
+        }
+        else {
+            message = 'Input temperature'
+        }
+        document.getElementById("message").innerHTML = message;
+    }
+</script>
+
+</html>
