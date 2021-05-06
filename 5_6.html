@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function summ(a, b) {
+            return a + b;
+        };
+        function diff(a, b) {
+            return a - b;
+        };
+        function mult(a, b) {
+            return a * b;
+        };
+        function div(a, b) {
+            if (b === 0) {
+                return "Dibision by zero is not allowed";
+            }
+            return a / b;
+        };
+        function mathOperation(arg1, arg2, operation) {
+            if ((isNaN(arg1)) || (isNaN(arg2))) {
+                return "Something went wrong"
+            }
+            switch (operation) {
+                case ("summ"): return summ(arg1, arg2);
+                    break;
+                case ("diff"): return diff(arg1, arg2);
+                    break;
+                case ('mult'): return mult(arg1, arg2);
+                    break;
+                case ('div'): return div(arg1, arg2);
+                    break;
+                default: return "Something went wrong"
+            }
+        };
+        var a = parseInt(prompt('Input first number'));
+        var b = parseInt(prompt('Input second number'));
+        var operation = prompt('Input operation: summ, diff, mult, div');
+        alert(mathOperation(a, b, operation));
+    </script>
+</body>
+
+</html>
