@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let basketArr = [['Mars', 2, 60], ['Snikers', 3, 70], ['Twix', 4, 50]];
+        function countBasketPrice(basket) {
+            let basketSumm = 0;
+            for (good of basket) {
+                basketSumm += (good[1] * good[2])
+            }
+            return basketSumm
+        }
+        alert(countBasketPrice(basketArr))
+    </script>
+</body>
+
+</html>
