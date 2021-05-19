@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var basket = {
+            goodsArr: [],
+            basketSumm() {
+                let summ = 0;
+                for (good of this.goodsArr) {
+                    summ += good.price * good.quanity
+                }
+                return summ;
+            },
+            clearBasket() {
+                this.goodsArr.length = 0;
+            }
+
+        }
+        function good(name, price) {
+            return {
+                name: name,
+                price: price,
+                addToBasket(quanity) {
+                    this.quanity = quanity;
+                    basket.goodsArr.push(this);
+                    delete this.addToBasket;
+                }
+            }
+        }
+        let good1 = good('mars', 60);
+        let good2 = good('sinikers', 70);
+        let good3 = good('twix', 50);
+        good1.addToBasket(7);
+        good2.addToBasket(5);
+        good3.addToBasket(4);
+        console.log(basket.goodsArr);
+        console.log(basket.goodsArr.length);
+        let basketSumm = basket.basketSumm();
+        console.log(summ);
+        basket.clearBasket();
+        console.log(basket.goodsArr);
+
+        // 3. Класс good имеет изначально имеет атрибуты имя, цена и метод добавления в корзину. При добавлении в корзину добавляется атрибут количество и удаляется метод добавления в корзину. Можно так же добавлять метод удаления из корзины. Для корзин нужно сделать функцию - конструктор, что бы был экземпляр для каждой сессии.
+
+    </script>
+</body>
+
+</html>
