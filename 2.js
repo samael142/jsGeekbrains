@@ -33,9 +33,9 @@ const cart = {
         }
     ],
     addSummToGoods() {
-        totalAmount = this.goods.reduce((acc, item) => {
-            return acc += item.price;
-        }, 0);
+        for (good of this.goods) {
+            good.summ = good.price * good.quanity
+        }
     },
 
     addAllSumm() {
