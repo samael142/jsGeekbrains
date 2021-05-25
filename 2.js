@@ -39,11 +39,7 @@ const cart = {
     },
 
     addAllSumm() {
-        var summ = 0
-        for (el of this.goods) {
-            summ += el.price * el.quanity
-        }
-        return summ
+        return this.goods.reduce((partial_sum, a) => partial_sum + a.price * a.quanity, 0);
     },
 
     init() {
