@@ -14,6 +14,7 @@ const cart = {
     cartElement: null,
     cartStatus: null,
     cartButton: null,
+    cartGood,
     goods: [
         {
             name: 'Mars',
@@ -31,43 +32,46 @@ const cart = {
             quanity: 6
         }
     ],
-
     addSummToGoods() {
-        for (good of this.goods) {
-            good.summ = good.price * good.quanity
+        totalAmount = this.goods.reduce((acc, item) => {
+            return acc += item.price;
+        }, 0);
+    },
+
+    addAllSumm() {
+        var summ = 0
+        for (el of this.goods) {
+            summ += el.price * el.quanity
         }
+        return summ
     },
 
     init() {
         this.cartElement = document.getElementById('cart')
         this.cartStatus = document.getElementById('cart__status')
         this.cartButton = document.querySelector('#clear__btn')
-        this.cartButton.addEventListener('click', this.clearCart.bind())
+        this.cartButton.addEventListener('click', this.clearCart.bind(this))
         this.renderCart()
     },
-
     clearCart() {
-        this.goods = []
-        this.renderCart()
+        this.goods = [];
+        this.renderCart();
+        
     },
-
     renderCart() {
-        // cartElement = document.getElementById('cart')
-        // cartStatus = document.getElementById('cart__status')
-        // cartButton = document.querySelector('#clear__btn')
-        // cartButton.addEventListener('click', this.clearCart.bind())
-        this.addSummToGoods()
-        for (good of this.goods) {
-            this.cartElement.insertAdjacentHTML('afterbegin', cartGood.render(good));
-        }
         if (this.goods.length != 0) {
-            this.cartStatus.insertAdjacentHTML('afterbegin', `В корзине ${this.goods.length} товаров`)
+            this.addSummToGoods()
+            for (good of this.goods) {
+                this.cartElement.insertAdjacentHTML('afterbegin', this.cartGood.render(good));
+            }
+            this.cartStatus.insertAdjacentHTML('afterbegin', `В корзине ${this.goods.length} товаров на сумму ${this.addAllSumm()}`)
         } else {
-            this.cartStatus.textContent = 'В корзине пусто'
-            console.log('dffgfg')
+            this.cartElement.textContent = ""
+            this.cartStatus.textContent = 'Корзина пуста';
         }
     }
 }
+
 
 cart.init()
 
