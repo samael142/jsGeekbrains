@@ -1,7 +1,0 @@
-.good {
-    display: flex;
-    flex-direction: column;
-    max-width: 1024px;
-    background-color: lightgrey;
-    margin-bottom: 10px;
-}
