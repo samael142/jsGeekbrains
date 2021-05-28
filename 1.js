@@ -117,12 +117,14 @@ const goods = {
         for (let good of this.goods) {
             this.cartInGoodsElement.insertAdjacentHTML('afterbegin', this.goodInGoods.render(good));
         }
-        const btns = document.querySelectorAll('.add__to__cart');
-        // Привязываем событие нажатия к определённому товару. Есть ли ещё какой способ, кроме цикла?
-        for (let btn of btns) {
-            let goodID = btn.parentNode.id;
-            btn.addEventListener('click', () => this.addToCartInternalFunc(goodID));
-        }
+        document.querySelector('.goods').addEventListener('click', (event) => {
+            this.goodsClickHandler(event)
+        })
+    },
+    goodsClickHandler(event) {
+        if (event.target.tagName !== 'BUTTON') return;
+        let goodID = event.target.parentNode.id;
+        this.addToCartInternalFunc(goodID);
     },
     init() {
         this.cartInGoodsElement = document.getElementById('goods');
