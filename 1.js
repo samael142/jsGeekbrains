@@ -12,7 +12,7 @@ const cartGood = {
 // Отрисовка элементов списка товаров
 const goodInGoods = {
     render(good) {
-        return `<div class="good__in__goods" id="${good.id}">
+        return `<div class="good__in__goods" data-id="${good.id}">
                     <b>${good.name}</b>
                     <span>Price: <b>${good.price}</b></span>
                     <br>
@@ -57,7 +57,7 @@ const cart = {
         this.goods = [];
         this.renderCart();
     },
-    buyCart () {
+    buyCart() {
         alert(
             `Куплено ${this.goods.length} товаров на сумму ${this.addAllSumm()}`
         );
@@ -123,7 +123,7 @@ const goods = {
     },
     goodsClickHandler(event) {
         if (event.target.tagName !== 'BUTTON') return;
-        let goodID = event.target.parentNode.id;
+        let goodID = event.target.parentNode.dataset.id;
         this.addToCartInternalFunc(goodID);
     },
     init() {
