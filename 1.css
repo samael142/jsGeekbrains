@@ -1,0 +1,36 @@
+.good {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    background-color: lightgrey;
+    margin-bottom: 10px;
+}
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.goods {
+    display: flex;
+    width: 320px;
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+    flex-shrink: initial;
+}
+
+.good__in__goods {
+    display: flex;
+    flex-direction: column;
+    height: 90px;
+    width: 90px;
+    background: lightgrey;
+    padding: 5px;
+    margin-left: 5px;
+}
+
